@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanical Engineering Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #050505; 
+            --surface-dark: rgba(18, 18, 18, 0.7); 
+            
+            --c-orange: #ff4500;
+            --c-cyan: #00f0ff;
+            --c-pink: #ff007f;
+            --c-green: #00ff66;
+            --c-yellow: #ffcc00;
+            --c-purple: #b026ff;
+
+            --text-light: #f4f4f5;
+            --text-muted: #a1a1aa;
+            
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+            
+            --mouse-x: 50vw;
+            --mouse-y: 50vh;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            font-size: 1.1rem;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #interactive-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none; 
+            z-index: 0;
+            background: radial-gradient(
+                600px circle at var(--mouse-x) var(--mouse-y), 
+                rgba(0, 240, 255, 0.05), 
+                transparent 40%
+            );
+            transition: background 0.05s ease; /* Faster glow tracking */
+        }
+
+        .mech-icon {
+            position: absolute;
+            opacity: 0.08; 
+            stroke: var(--c-cyan);
+            stroke-width: 1px;
+            fill: none;
+            transition: transform 0.1s ease-out; /* Snappier parallax */
+        }
+
+        #gear1 { top: 10%; left: 5%; width: 300px; height: 300px; }
+        #gear2 { top: 50%; right: -5%; width: 500px; height: 500px; stroke: var(--c-orange); opacity: 0.05;}
+        #gear3 { bottom: 10%; left: 20%; width: 200px; height: 200px; stroke: var(--c-purple); }
+
+        nav, section {
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(16px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav h1 {
+            font-family: var(--font-heading);
+            color: var(--text-light);
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav h1 span {
+            background: linear-gradient(90deg, var(--c-orange), var(--c-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s ease; /* Faster nav hover */
+        }
+
+        nav a:hover {
+            color: var(--c-cyan);
+        }
+
+        section {
+            padding: 140px 10% 100px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.98) translateY(30px); /* Less travel distance */
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Faster section reveal */
+        }
+
+        section.section-show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        h2.section-title {
+            font-family: var(--font-heading);
+            font-size: 4rem; 
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2.section-title span {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--text-light);
+        }
+
+        #hero {
+            text-align: center;
+            align-items: center;
+            opacity: 1; 
+            transform: none;
+        }
+
+        #hero h1 {
+            font-family: var(--font-heading);
+            font-size: 6rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, var(--c-orange), var(--c-pink), var(--c-purple), var(--c-cyan));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 8s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #hero p {
+            font-size: 1.6rem;
+            color: var(--text-muted);
+            margin-bottom: 3.5rem;
+            max-width: 900px;
+            font-weight: 300;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--c-cyan);
+            border: 2px solid var(--c-cyan);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.2s ease; /* Faster button hover */
+            position: relative;
+            border-radius: 50px; 
+            backdrop-filter: blur(5px);
+        }
+
+        .btn:hover {
+            background: var(--c-cyan);
+            color: var(--bg-dark);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--surface-dark);
+            backdrop-filter: blur(10px); 
+            padding: 3.5rem 2.5rem;
+            border-radius: 30px; 
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Snappy card hover */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px; 
+            transition: height 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px); /* Slightly less travel for speed */
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .card:hover::before {
+            height: 100%;
+            opacity: 0.05;
+        }
+
+        .card.edu { border-top: 8px solid var(--c-green); }
+        .card.edu:hover { box-shadow: 0 20px 40px rgba(0, 255, 102, 0.15); }
+        .card.edu h3 { color: var(--c-green); }
+
+        .card.tech { border-top: 8px solid var(--c-yellow); }
+        .card.tech:hover { box-shadow: 0 20px 40px rgba(255, 204, 0, 0.15); }
+        .card.tech h3 { color: var(--c-yellow); }
+
+        .card.rocket { border-top: 8px solid var(--c-orange); }
+        .card.rocket:hover { box-shadow: 0 20px 40px rgba(255, 69, 0, 0.15); }
+        .card.rocket h3 { color: var(--c-orange); }
+
+        .card.uav { border-top: 8px solid var(--c-cyan); }
+        .card.uav:hover { box-shadow: 0 20px 40px rgba(0, 240, 255, 0.15); }
+        .card.uav h3 { color: var(--c-cyan); }
+
+        .card.kart { border-top: 8px solid var(--c-pink); }
+        .card.kart:hover { box-shadow: 0 20px 40px rgba(255, 0, 127, 0.15); }
+        .card.kart h3 { color: var(--c-pink); }
+
+        .card.lead { border-top: 8px solid var(--c-purple); }
+        .card.lead:hover { box-shadow: 0 20px 40px rgba(176, 38, 255, 0.15); }
+        .card.lead h3 { color: var(--c-purple); }
+
+        .card h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card p { color: var(--text-muted); margin-bottom: 1rem; }
+        .card strong { color: var(--text-light); font-weight: 600; }
+
+        .hidden {
+            opacity: 0;
+            filter: blur(4px); /* Less blur for faster rendering */
+            transform: translateY(40px) scale(0.98); /* Less distance */
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Much faster card reveal */
+        }
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0) scale(1);
+        }
+        /* Drastically reduced staggered wait times */
+        .grid-container .card:nth-child(2) { transition-delay: 75ms; }
+        .grid-container .card:nth-child(3) { transition-delay: 150ms; }
+    </style>
+</head>
+<body>
+
+    <div id="interactive-bg">
+        <svg id="gear1" class="mech-icon" viewBox="0 0 24 24" data-speed="-2">
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        <svg id="gear2" class="mech-icon" viewBox="0 0 24 24" data-speed="1.5">
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        <svg id="gear3" class="mech-icon" viewBox="0 0 24 24" data-speed="-3">
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+    </div>
+
+    <nav>
+        <h1>Mech<span>Eng</span></h1>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#leadership">Leadership</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero">
+        <div class="hidden">
+            <h1>[Your Name]</h1>
+            <p>Pre-Final Year Mechanical Engineering Student | Specializing in Propulsion Systems & UAV Aerodynamics</p>
+            <a href="#projects" class="btn">Explore My Work</a>
+        </div>
+    </section>
+
+    <section id="education" class="sec-transition">
+        <h2 class="section-title hidden">Education <span>& Skills</span></h2>
+        <div class="grid-container">
+            <div class="card edu hidden">
+                <h3>Academic Profile</h3>
+                <p><strong>Government College of Technology, Coimbatore</strong></p>
+                <p>B.E. Mechanical Engineering (Pre-Final Year)</p>
+                <p>Core Focus: Thermodynamics, Fluid Dynamics, Materials Science, and Finite Element Analysis.</p>
+            </div>
+            <div class="card tech hidden">
+                <h3>Technical Stack</h3>
+                <p><strong>Design & Simulation:</strong> SolidWorks, ANSYS, MATLAB, Simulink</p>
+                <p><strong>Core Competencies:</strong> Liquid Rocket Engines, Aerodynamic Modeling, Transmission Systems</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="sec-transition">
+        <h2 class="section-title hidden">Featured <span>Projects</span></h2>
+        <div class="grid-container">
+            <div class="card rocket hidden">
+                <h3>1000N Rocket Engine</h3>
+                <p>Engineered and modeled a liquid rocket engine. Executed complex thrust calculations, determined precise nozzle design parameters, and simulated performance metrics using Simulink.</p>
+            </div>
+            <div class="card uav hidden">
+                <h3>SAE Drone Dev</h3>
+                <p>Designed, fabricated, and piloted UAVs for competitive flight. Secured All India Ranks 19 and 27 in the highly competitive SAE Drone Development Challenge.</p>
+            </div>
+            <div class="card kart hidden">
+                <h3>Go-Kart Transmission</h3>
+                <p>Developed a comprehensive mathematical design procedure to determine the optimal gear ratios for a high-performance go-kart chain drive transmission system.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="leadership" class="sec-transition">
+        <h2 class="section-title hidden">Leadership <span>Profile</span></h2>
+        <div class="grid-container">
+            <div class="card lead hidden">
+                <h3>President, Centaurus</h3>
+                <p>Directing a premier technical society. Managing budgets, securing external internships for society members, and spearheading major engineering projects.</p>
+            </div>
+            <div class="card lead hidden" style="border-top-color: var(--c-orange);">
+                <h3 style="color: var(--c-orange);">Event Director</h3>
+                <p>Organizing PSAMY'25, a massive technical symposium coinciding with Dr. APJ Abdul Kalam's birthday, managing everything from promotional campaigns to on-ground logistics.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const mechIcons = document.querySelectorAll('.mech-icon');
+        let requestRef;
+
+        // Optimized Mouse Tracking using requestAnimationFrame for zero-lag feeling
+        document.addEventListener('mousemove', (e) => {
+            if (requestRef) cancelAnimationFrame(requestRef);
+            
+            requestRef = requestAnimationFrame(() => {
+                const x = e.clientX;
+                const y = e.clientY;
+                
+                document.documentElement.style.setProperty('--mouse-x', `${x}px`);
+                document.documentElement.style.setProperty('--mouse-y', `${y}px`);
+
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+
+                mechIcons.forEach(icon => {
+                    const speed = icon.getAttribute('data-speed');
+                    const xOffset = (x - centerX) / (50 / speed);
+                    const yOffset = (y - centerY) / (50 / speed);
+                    const rotation = x / (10 * Math.abs(speed));
+
+                    icon.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${rotation}deg)`;
+                });
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.15 
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if(entry.target.tagName.toLowerCase() === 'section') {
+                        entry.target.classList.add('section-show');
+                    }
+                    entry.target.classList.add('show');
+                }
+            });
+        }, observerOptions);
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        const sections = document.querySelectorAll('.sec-transition');
+        
+        hiddenElements.forEach((el) => observer.observe(el));
+        sections.forEach((sec) => observer.observe(sec));
+    </script>
+</body>
+</html>
