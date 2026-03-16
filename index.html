@@ -3,32 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sriram S | The Mechanical Engineer</title>
+    <title>Sriram S | Mechanical Engineer Portfolio</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
+        /* --- Material 3 Color Palette (Light Theme) --- */
         :root {
-            --bg-dark: #050505; 
-            --surface-dark: rgba(18, 18, 18, 0.7); 
+            /* Backgrounds & Surfaces */
+            --md-bg: #f4f5f8; /* Expressive Light Gray */
+            --md-surface: #ffffff; /* Clean White Cards */
+            --md-surface-variant: #e1e2e8; /* Gray for chips/tags */
             
-            --c-orange: #ff4500;
-            --c-cyan: #00f0ff;
-            --c-pink: #ff007f;
-            --c-green: #00ff66;
-            --c-yellow: #ffcc00;
-            --c-purple: #b026ff;
+            /* Text Colors */
+            --md-on-bg: #1a1c1e; /* Near Black */
+            --md-on-surface-variant: #43474e; /* Soft Gray Text */
+            
+            /* Tonal Accent Colors for Cards */
+            --md-primary-container: #d1e4ff; /* Soft Blue */
+            --md-on-primary-container: #001d36;
+            
+            --md-secondary-container: #dcedc8; /* Soft Green */
+            --md-on-secondary-container: #102200;
+            
+            --md-tertiary-container: #ffdf9c; /* Soft Yellow/Orange */
+            --md-on-tertiary-container: #251a00;
+            
+            --md-error-container: #ffdad6; /* Soft Pink/Red */
+            --md-on-error-container: #410002;
+            
+            --md-purple-container: #eaddff; /* Soft Purple */
+            --md-on-purple-container: #21005d;
 
-            --text-light: #f4f4f5;
-            --text-muted: #a1a1aa;
-            
-            --font-heading: 'Montserrat', sans-serif;
-            --font-body: 'Poppins', sans-serif;
-            
-            --mouse-x: 50vw;
-            --mouse-y: 50vh;
+            /* Primary Action */
+            --md-primary: #006493; /* Strong Mechanical Blue */
+            --md-on-primary: #ffffff;
+
+            /* Fonts */
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Roboto', sans-serif;
         }
 
         * {
@@ -38,19 +53,18 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            background-color: var(--md-bg);
+            color: var(--md-on-bg);
             font-family: var(--font-body);
-            line-height: 1.7;
-            font-size: 1.1rem;
+            line-height: 1.6;
+            font-size: 1.05rem;
             overflow-x: hidden;
             position: relative;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
+        /* --- Interactive Subtle Background Gears --- */
         #interactive-bg {
             position: fixed;
             top: 0;
@@ -59,59 +73,49 @@
             height: 100vh;
             pointer-events: none; 
             z-index: 0;
-            background: radial-gradient(
-                600px circle at var(--mouse-x) var(--mouse-y), 
-                rgba(0, 240, 255, 0.05), 
-                transparent 40%
-            );
-            transition: background 0.05s ease;
+            overflow: hidden;
         }
 
         .mech-icon {
             position: absolute;
-            opacity: 0.08; 
-            stroke: var(--c-cyan);
-            stroke-width: 1px;
+            stroke: #e1e3e8; /* Very subtle gray to match background */
+            stroke-width: 1.5px;
             fill: none;
             transition: transform 0.1s ease-out;
         }
 
-        #gear1 { top: 10%; left: 5%; width: 300px; height: 300px; }
-        #gear2 { top: 50%; right: -5%; width: 500px; height: 500px; stroke: var(--c-orange); opacity: 0.05;}
-        #gear3 { bottom: 10%; left: 20%; width: 200px; height: 200px; stroke: var(--c-purple); }
+        #gear1 { top: -5%; left: -5%; width: 400px; height: 400px; opacity: 0.6; }
+        #gear2 { top: 40%; right: -10%; width: 600px; height: 600px; opacity: 0.4; stroke-width: 1px;}
+        #gear3 { bottom: 5%; left: 15%; width: 250px; height: 250px; opacity: 0.8; }
 
-        nav, section {
+        nav, section, footer {
             position: relative;
             z-index: 1;
         }
 
+        /* --- M3 Navigation --- */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(16px);
-            padding: 1rem 5%;
+            background: rgba(244, 245, 248, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 1.2rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         nav h1 {
             font-family: var(--font-heading);
-            color: var(--text-light);
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            color: var(--md-on-bg);
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
-        nav h1 span {
-            background: linear-gradient(90deg, var(--c-orange), var(--c-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        nav h1 span { color: var(--md-primary); }
 
         nav ul {
             display: flex;
@@ -121,18 +125,20 @@
 
         nav a {
             text-decoration: none;
-            color: var(--text-light);
-            font-weight: 600;
+            color: var(--md-on-surface-variant);
+            font-weight: 500;
             font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             transition: color 0.2s ease;
+            padding: 8px 12px;
+            border-radius: 100px;
         }
 
         nav a:hover {
-            color: var(--c-cyan);
+            color: var(--md-on-bg);
+            background-color: var(--md-surface-variant);
         }
 
+        /* --- Sections --- */
         section {
             padding: 140px 10% 80px;
             min-height: 100vh;
@@ -140,180 +146,178 @@
             flex-direction: column;
             justify-content: center;
             opacity: 0;
-            transform: scale(0.98) translateY(30px);
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.2, 0, 0, 1);
         }
 
         section.section-show {
             opacity: 1;
-            transform: scale(1) translateY(0);
+            transform: translateY(0);
         }
 
         h2.section-title {
             font-family: var(--font-heading);
             font-size: 3.5rem; 
-            color: var(--text-light);
+            color: var(--md-on-bg);
             margin-bottom: 3rem;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.2;
         }
 
-        h2.section-title span {
-            color: transparent;
-            -webkit-text-stroke: 2px var(--text-light);
-        }
+        h2.section-title span { color: var(--md-primary); }
 
+        /* --- M3 Hero Section --- */
         #hero {
-            text-align: center;
-            align-items: center;
+            align-items: flex-start;
             opacity: 1; 
             transform: none;
         }
 
         #hero h1 {
             font-family: var(--font-heading);
-            font-size: 5rem;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            background: linear-gradient(45deg, var(--c-orange), var(--c-pink), var(--c-purple), var(--c-cyan));
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientMove 8s ease infinite;
-        }
-
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            font-size: 5.5rem;
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            color: var(--md-on-bg);
+            letter-spacing: -2px;
         }
 
         #hero p {
-            font-size: 1.5rem;
-            color: var(--text-muted);
+            font-size: 1.8rem;
+            color: var(--md-on-surface-variant);
             margin-bottom: 1rem;
-            font-weight: 300;
+            font-weight: 400;
+            font-family: var(--font-heading);
         }
         
         .contact-info {
-            font-size: 1rem;
-            color: var(--c-cyan);
-            margin-bottom: 2.5rem;
-            letter-spacing: 1px;
+            font-size: 1.1rem;
+            color: var(--md-on-surface-variant);
+            margin-bottom: 3rem;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
         
         .contact-info a {
-            color: var(--text-light);
+            color: var(--md-primary);
             text-decoration: none;
-            transition: color 0.3s ease;
+            font-weight: 500;
         }
-        .contact-info a:hover { color: var(--c-pink); }
+        .contact-info a:hover { text-decoration: underline; }
 
+        /* M3 Filled Button (Pill Shape) */
         .btn {
-            padding: 15px 35px;
-            background: rgba(0, 240, 255, 0.1);
-            color: var(--c-cyan);
-            border: 2px solid var(--c-cyan);
+            padding: 16px 40px;
+            background: var(--md-primary);
+            color: var(--md-on-primary);
             text-decoration: none;
-            font-family: var(--font-heading);
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.2s ease;
-            position: relative;
-            border-radius: 50px; 
-            backdrop-filter: blur(5px);
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 1.1rem;
+            border-radius: 100px; /* Expressive Pill Shape */
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
             display: inline-block;
+            box-shadow: 0 4px 8px rgba(0, 100, 147, 0.2);
         }
 
         .btn:hover {
-            background: var(--c-cyan);
-            color: var(--bg-dark);
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
-            transform: scale(1.05);
+            background: #00557e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 100, 147, 0.3);
         }
 
+        /* --- M3 Grid & Elevated Cards --- */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
         }
 
         .card {
-            background: var(--surface-dark);
-            backdrop-filter: blur(10px); 
-            padding: 2.5rem 2rem;
-            border-radius: 20px; 
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
+            background: var(--md-surface);
+            padding: 32px;
+            border-radius: 28px; /* Large M3 Corners */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 10px rgba(0,0,0,0.02);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
             display: flex;
             flex-direction: column;
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px; 
-            transition: height 0.2s ease;
-        }
-
         .card:hover {
-            transform: translateY(-8px);
-            background: rgba(30, 30, 30, 0.8);
-            border: 1px solid rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.05);
         }
 
-        .card:hover::before {
-            height: 100%;
-            opacity: 0.05;
+        /* Tonal Header Accents for M3 */
+        .card-header-chip {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            align-self: flex-start;
         }
 
-        /* Color classes */
-        .card.c1 { border-top-color: var(--c-green); } .card.c1:hover { box-shadow: 0 15px 30px rgba(0, 255, 102, 0.15); } .card.c1 h3 { color: var(--c-green); }
-        .card.c2 { border-top-color: var(--c-yellow); } .card.c2:hover { box-shadow: 0 15px 30px rgba(255, 204, 0, 0.15); } .card.c2 h3 { color: var(--c-yellow); }
-        .card.c3 { border-top-color: var(--c-cyan); } .card.c3:hover { box-shadow: 0 15px 30px rgba(0, 240, 255, 0.15); } .card.c3 h3 { color: var(--c-cyan); }
-        .card.c4 { border-top-color: var(--c-orange); } .card.c4:hover { box-shadow: 0 15px 30px rgba(255, 69, 0, 0.15); } .card.c4 h3 { color: var(--c-orange); }
-        .card.c5 { border-top-color: var(--c-pink); } .card.c5:hover { box-shadow: 0 15px 30px rgba(255, 0, 127, 0.15); } .card.c5 h3 { color: var(--c-pink); }
-        .card.c6 { border-top-color: var(--c-purple); } .card.c6:hover { box-shadow: 0 15px 30px rgba(176, 38, 255, 0.15); } .card.c6 h3 { color: var(--c-purple); }
+        .c-blue { background: var(--md-primary-container); color: var(--md-on-primary-container); }
+        .c-green { background: var(--md-secondary-container); color: var(--md-on-secondary-container); }
+        .c-yellow { background: var(--md-tertiary-container); color: var(--md-on-tertiary-container); }
+        .c-pink { background: var(--md-error-container); color: var(--md-on-error-container); }
+        .c-purple { background: var(--md-purple-container); color: var(--md-on-purple-container); }
 
         .card h3 {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 1.6rem;
+            color: var(--md-on-bg);
+            margin-bottom: 12px;
+            font-weight: 700;
         }
 
-        .card p { color: var(--text-muted); margin-bottom: 0.8rem; font-size: 1rem; }
-        .card strong { color: var(--text-light); font-weight: 600; }
+        .card p { 
+            color: var(--md-on-surface-variant); 
+            margin-bottom: 12px; 
+        }
         
-        ul.skill-list {
-            margin-left: 20px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
+        .card strong { color: var(--md-on-bg); }
+        
+        /* M3 Tag/Chip System for Skills */
+        .chip-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto; /* Pushes chips to bottom of card */
+            padding-top: 16px;
         }
 
+        .chip {
+            background: var(--md-surface-variant);
+            color: var(--md-on-bg);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        ul.list-items {
+            margin-left: 20px;
+            color: var(--md-on-surface-variant);
+            margin-bottom: 16px;
+        }
+        
+        ul.list-items li { margin-bottom: 6px; }
+
+        /* Animation Classes */
         .hidden {
             opacity: 0;
-            filter: blur(4px);
-            transform: translateY(40px) scale(0.98);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translateY(30px);
+            transition: all 0.5s cubic-bezier(0.2, 0, 0, 1);
         }
         .show {
             opacity: 1;
-            filter: blur(0);
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
         }
         
         .grid-container .card:nth-child(2) { transition-delay: 50ms; }
@@ -323,29 +327,33 @@
 
         .footer {
             text-align: center;
-            padding: 50px 10%;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-muted);
+            padding: 60px 10%;
+            background: var(--md-surface);
+            border-top: 1px solid var(--md-surface-variant);
+            color: var(--md-on-surface-variant);
+            border-radius: 40px 40px 0 0;
         }
 
-        /* --- MOBILE OPTIMIZATION (RESPONSIVENESS) --- */
+        /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
                 padding: 1rem;
-                gap: 1rem;
+                gap: 0.5rem;
+                border-radius: 0 0 24px 24px;
             }
             nav ul {
-                gap: 1rem;
+                gap: 0.5rem;
                 flex-wrap: wrap;
                 justify-content: center;
             }
-            #hero h1 { font-size: 3rem; }
-            #hero p { font-size: 1.2rem; }
+            nav a { padding: 6px 10px; font-size: 0.9rem;}
+            #hero h1 { font-size: 3.2rem; letter-spacing: -1px; }
+            #hero p { font-size: 1.3rem; }
             h2.section-title { font-size: 2.5rem; margin-bottom: 2rem;}
-            section { padding: 160px 5% 50px; }
-            .grid-container { grid-template-columns: 1fr; } /* Stack cards on mobile */
-            .card { padding: 2rem 1.5rem; }
+            section { padding: 180px 5% 60px; }
+            .grid-container { grid-template-columns: 1fr; gap: 16px; } 
+            .card { padding: 24px; border-radius: 24px; }
         }
     </style>
 </head>
@@ -374,11 +382,15 @@
 
     <section id="hero">
         <div class="hidden">
-            <h1>Sriram S</h1>
+            <h1>Sriram S.</h1>
             <p>The Mechanical Engineer</p>
             <div class="contact-info">
-                <span>+91 9360776088 | mmsekarsriram6@gmail.com</span>
-                <span><a href="https://mrsriram.github.io/portfolio" target="_blank">Portfolio</a> | <a href="#" target="_blank">LinkedIn</a> | <a href="#" target="_blank">GitHub: mrsriram</a></span>
+                <span>+91 9360776088 &nbsp;|&nbsp; mmsekarsriram6@gmail.com</span>
+                <span>
+                    <a href="https://mrsriram.github.io/portfolio" target="_blank">Portfolio</a> &nbsp;&bull;&nbsp; 
+                    <a href="#" target="_blank">LinkedIn: Sriram Sekar</a> &nbsp;&bull;&nbsp; 
+                    <a href="#" target="_blank">GitHub: mrsriram</a>
+                </span>
             </div>
             <a href="#about" class="btn">View Profile</a>
         </div>
@@ -387,15 +399,18 @@
     <section id="about" class="sec-transition">
         <h2 class="section-title hidden">Bio <span>Data</span></h2>
         <div class="grid-container">
-            <div class="card c1 hidden">
-                <h3>Personal Profile</h3>
-                <p><strong>Age:</strong> 20 | <strong>DOB:</strong> 30/09/2005</p>
+            <div class="card hidden">
+                <span class="card-header-chip c-blue">Personal Profile</span>
+                <p><strong>Age:</strong> 20 &nbsp;|&nbsp; <strong>DOB:</strong> 30/09/2005</p>
                 <p><strong>Marital Status:</strong> Unmarried</p>
                 <p><strong>Hobbies:</strong> Astro Photography, Walking, Chess</p>
-                <p><strong>Languages:</strong> Tamil (Read, Write, Speak), English (Read, Write, Speak)</p>
+                <div class="chip-container">
+                    <span class="chip">Tamil (R/W/S)</span>
+                    <span class="chip">English (R/W/S)</span>
+                </div>
             </div>
-            <div class="card c2 hidden">
-                <h3>Contact & Location</h3>
+            <div class="card hidden">
+                <span class="card-header-chip c-purple">Contact & Location</span>
                 <p><strong>Communication Address:</strong><br>Boys Hostel, Government College of Technology, Coimbatore - 641013.</p>
                 <p><strong>Permanent Address:</strong><br>6/32, Kuttaikarai Street, Sennakunam, Kandachipuram Taluk, Villupuram District, Tamil Nadu, India - 605755.</p>
             </div>
@@ -405,22 +420,27 @@
     <section id="education" class="sec-transition">
         <h2 class="section-title hidden">Education <span>Profile</span></h2>
         <div class="grid-container">
-            <div class="card c3 hidden">
+            <div class="card hidden">
+                <span class="card-header-chip c-blue">Undergraduate</span>
                 <h3>B.E. Mechanical Engineering</h3>
                 <p><strong>Government College of Technology, Coimbatore</strong></p>
-                <p>2027 | Current CGPA: 8.43 out of 10</p>
+                <p>Class of 2027</p>
+                <p><strong>CGPA:</strong> 8.43 out of 10 (Upto 5th Semester)</p>
             </div>
-            <div class="card c3 hidden">
+            <div class="card hidden">
+                <span class="card-header-chip c-green">Higher Secondary</span>
                 <h3>12th Standard (TN-HSC)</h3>
                 <p><strong>Govt. Higher Secondary School, Mambalapattu</strong></p>
-                <p>Major: Computer Science | 2023</p>
-                <p>Score: 89% (535 out of 600)</p>
+                <p>Villupuram District | 2023</p>
+                <p><strong>Major:</strong> Computer Science</p>
+                <p><strong>Score:</strong> 89% (535 out of 600)</p>
             </div>
-            <div class="card c3 hidden">
+            <div class="card hidden">
+                <span class="card-header-chip c-yellow">Secondary</span>
                 <h3>10th Standard (TN-HSC)</h3>
                 <p><strong>Govt. High School, Sennakunam</strong></p>
                 <p>Villupuram District | 2021</p>
-                <p>Score: PASS (Due to Corona)</p>
+                <p><strong>Score:</strong> PASS (Due to Corona)</p>
             </div>
         </div>
     </section>
@@ -428,31 +448,35 @@
     <section id="experience" class="sec-transition">
         <h2 class="section-title hidden">Experience <span>& Leadership</span></h2>
         <div class="grid-container">
-            <div class="card c4 hidden">
-                <h3>Internship | SRJ Automation</h3>
+            <div class="card hidden">
+                <span class="card-header-chip c-pink">Internship</span>
+                <h3>SRJ Automation</h3>
                 <p><strong>Coimbatore | Jun - Jul 2025</strong></p>
-                <p>Learned the applications of CNC Machines in various manufacturing processes and different types of Quality control methods. Gained hands-on experience in:</p>
-                <ul class="skill-list">
-                    <li>CNC Operation & Programming Logic</li>
+                <p>Learned the applications of CNC Machines in various manufacturing processes and different types of Quality control methods.</p>
+                <ul class="list-items">
+                    <li>CNC Operation</li>
                     <li>Quality Inspection</li>
                     <li>Industrial Tools (Grinding, Cutting, etc)</li>
+                    <li>CNC Programming logic</li>
                     <li>Jigs and Fixtures</li>
                 </ul>
             </div>
-            <div class="card c5 hidden">
-                <h3>President | Centaurus Aerospace</h3>
+            <div class="card hidden">
+                <span class="card-header-chip c-blue">President</span>
+                <h3>Centaurus Aerospace Society</h3>
                 <p><strong>GCT Aerospace Club | Oct 2025 - Present</strong></p>
-                <p>Initiated 6+ projects in Cosmology, Aerospace, and Satellite Technologies across three divisions:</p>
-                <ul class="skill-list">
-                    <li><strong>COSMOZ:</strong> Mission Gravitas (Lander & Rover)</li>
+                <p>Initiated 6+ projects in Cosmology, Aerospace, and Satellite Technologies.</p>
+                <ul class="list-items">
+                    <li><strong>COSMOZ:</strong> Mission Gravitas (Lander & Rover Module)</li>
                     <li><strong>AEROZ:</strong> Trainer RC plane, Drone, Bionic Butterfly</li>
                     <li><strong>SATOZ:</strong> Cubesat, Satellite Ground Station</li>
                 </ul>
             </div>
-            <div class="card c6 hidden">
-                <h3>Board Member | TEDxGCT 2026</h3>
+            <div class="card hidden">
+                <span class="card-header-chip c-purple">Board Member</span>
+                <h3>TEDxGCT 2026</h3>
                 <p><strong>Finance Division | Theme: "THE WHY FACTOR"</strong></p>
-                <ul class="skill-list">
+                <ul class="list-items">
                     <li>Coordinating Overall Financial Transfers</li>
                     <li>Rising funds through sponsors</li>
                     <li>Reporting Overall Budget to Institution</li>
@@ -464,65 +488,93 @@
     <section id="projects" class="sec-transition">
         <h2 class="section-title hidden">Technical <span>Projects</span></h2>
         <div class="grid-container">
-            <div class="card c1 hidden">
-                <h3>Fluid Viscous Damper (2026)</h3>
+            <div class="card hidden">
+                <span class="card-header-chip c-blue">2026</span>
+                <h3>Fluid Viscous Damper</h3>
                 <p><strong>TN-IMPACT 2026</strong></p>
-                <p>Designed an electrically controlled miniature Fluid Viscous Damper (100mm L x 30mm Dia).</p>
-                <p><strong>Skills:</strong> R&D, Literature Review, CREO, Fusion 360, ANSYS Fluent.</p>
+                <p>Designed a Miniature Fluid Viscous Damper with dimensions of 100mm length x 30mm dia.</p>
+                <div class="chip-container">
+                    <span class="chip">R & D</span><span class="chip">Literature Review</span>
+                    <span class="chip">CREO</span><span class="chip">Fusion 360</span><span class="chip">ANSYS Fluent</span>
+                </div>
             </div>
-            <div class="card c2 hidden">
-                <h3>Mini Drone (2026)</h3>
+            <div class="card hidden">
+                <span class="card-header-chip c-green">2026</span>
+                <h3>SWARM Inspired Mini Drone</h3>
                 <p><strong>College Project</strong></p>
-                <p>Built a mini drone (10cm x 10cm) inspired by SWARM Drones.</p>
-                <p><strong>Skills:</strong> Mission Planner, Arduino Systems (ESP 32), PID Tuning.</p>
+                <p>Built a mini Drone (10cm x 10cm) inspired by SWARM Drones.</p>
+                <div class="chip-container">
+                    <span class="chip">Mission Planner</span><span class="chip">Arduino (ESP 32)</span><span class="chip">PID Tuning</span>
+                </div>
             </div>
-            <div class="card c3 hidden">
-                <h3>E-Cycle Chassis Design (2024)</h3>
+            <div class="card hidden">
+                <span class="card-header-chip c-purple">2024</span>
+                <h3>E-Cycle Chassis Design</h3>
                 <p><strong>Founder's Fix Competition</strong></p>
-                <p>Designed for startup SRJ Automation. Innovative chassis without visible outside components; increased battery capacity.</p>
-                <p><strong>Skills:</strong> Design Optimization, Manufacturability, Fusion 360, Analysis.</p>
+                <p>Designed for startup SRJ Automation. Innovative chassis without any visible outside components, increased battery capacity.</p>
+                <div class="chip-container">
+                    <span class="chip">Design Optimization</span><span class="chip">Manufacturability</span><span class="chip">Fusion 360</span>
+                </div>
             </div>
-            <div class="card c4 hidden">
-                <h3>ISBAR (SIH 2024)</h3>
-                <p><strong>Smart India Hackathon</strong></p>
+            <div class="card hidden">
+                <span class="card-header-chip c-yellow">2024</span>
+                <h3>ISBAR</h3>
+                <p><strong>Smart India Hackathon 2024</strong></p>
                 <p>Integrated seismic wave analysis and bio-chemical detection to locate human bodies in disaster scenarios via 3D visualization.</p>
-                <p><strong>Skills:</strong> Matlab, Electrical Systems, Sensors, System Integration, Data Processing.</p>
+                <div class="chip-container">
+                    <span class="chip">Matlab</span><span class="chip">Electrical Systems</span><span class="chip">Sensors</span><span class="chip">System Integration</span><span class="chip">Data Processing</span>
+                </div>
             </div>
-            <div class="card c5 hidden">
-                <h3>Mathworks Minidrone (2023)</h3>
-                <p>Built a Flight Control System for Quadcopter integrating image processing. Simulated CAD model and tested control system.</p>
-                <p><strong>Skills:</strong> Matlab, Simulink, Fusion 360.</p>
+            <div class="card hidden">
+                <span class="card-header-chip c-pink">2023</span>
+                <h3>Mathworks Minidrone</h3>
+                <p>Built a Flight Control System for Quadcopter (Integrated Image Processing). Simulated CAD model and tested control system on Simulink.</p>
+                <div class="chip-container">
+                    <span class="chip">Matlab</span><span class="chip">Simulink</span><span class="chip">Fusion 360</span>
+                </div>
             </div>
-            <div class="card c6 hidden">
-                <h3>Geneva Wheel & Knuckle Joint (2024)</h3>
-                <p>Designed and animated the working of Geneva Wheel and Knuckle Joint mechanisms.</p>
-                <p><strong>Skills:</strong> CAD Modelling Fundamentals, Fusion 360, AutoCAD.</p>
+            <div class="card hidden">
+                <span class="card-header-chip c-blue">2024</span>
+                <h3>Geneva Wheel & Knuckle Joint</h3>
+                <p>Designed and Animated the working of Geneva Wheel and Knuckle Joints mechanisms.</p>
+                <div class="chip-container">
+                    <span class="chip">CAD Modelling</span><span class="chip">Fusion 360</span><span class="chip">AutoCAD</span>
+                </div>
             </div>
-            <div class="card c1 hidden">
-                <h3>MS Tractors Works (2022)</h3>
-                <p>Built a fully functional, hosted website for a Tractor Service Shop.</p>
-                <p><strong>Skills:</strong> UI/UX Design, HTML, CSS, Javascript.</p>
+            <div class="card hidden">
+                <span class="card-header-chip c-green">2022</span>
+                <h3>MS Tractors Works</h3>
+                <p>Built a Full Functionable Website for Tractor Service Shop and Hosted.</p>
+                <div class="chip-container">
+                    <span class="chip">UI and UX Design</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Javascript</span>
+                </div>
             </div>
-            <div class="card c2 hidden">
-                <h3>S4 Smart Signal Sys (2020)</h3>
+            <div class="card hidden">
+                <span class="card-header-chip c-yellow">2020</span>
+                <h3>S4 Smart Signal System</h3>
                 <p><strong>Dr. APJ Abdul Kalam Award (State Level)</strong></p>
-                <p>Introduced more colors in signal lights to represent vehicle states, reducing accidents.</p>
-                <p><strong>Skills:</strong> Simple Electrical Systems, Simple Driving Systems.</p>
+                <p>Built a smart signal system to reduce road accidents by introducing more colors in vehicle signal lights to represent various states.</p>
+                <div class="chip-container">
+                    <span class="chip">Simple Electrical Systems</span><span class="chip">Simple Driving Systems</span>
+                </div>
             </div>
         </div>
     </section>
 
     <div class="footer hidden">
         <p>"I hereby declare that the above-mentioned information is correct to the best of my knowledge and I will solely be responsible for any discrepancy found therein."</p>
-        <p style="margin-top: 20px;"><strong>Date:</strong> 15/03/2026 &nbsp; | &nbsp; <strong>Place:</strong> Coimbatore</p>
-        <p style="margin-top: 20px;"><strong>Signature:</strong> (Sriram S)</p>
+        <div style="margin-top: 24px; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
+            <p><strong>Date:</strong> 15/03/2026</p>
+            <p><strong>Place:</strong> Coimbatore</p>
+            <p><strong>Signature:</strong> (Sriram S)</p>
+        </div>
     </div>
 
     <script>
         const mechIcons = document.querySelectorAll('.mech-icon');
         let requestRef;
 
-        // Mouse tracking for non-touch devices
+        // Subtle Parallax for non-touch devices
         if (window.matchMedia("(pointer: fine)").matches) {
             document.addEventListener('mousemove', (e) => {
                 if (requestRef) cancelAnimationFrame(requestRef);
@@ -530,18 +582,15 @@
                 requestRef = requestAnimationFrame(() => {
                     const x = e.clientX;
                     const y = e.clientY;
-                    
-                    document.documentElement.style.setProperty('--mouse-x', `${x}px`);
-                    document.documentElement.style.setProperty('--mouse-y', `${y}px`);
 
                     const centerX = window.innerWidth / 2;
                     const centerY = window.innerHeight / 2;
 
                     mechIcons.forEach(icon => {
                         const speed = icon.getAttribute('data-speed');
-                        const xOffset = (x - centerX) / (50 / speed);
-                        const yOffset = (y - centerY) / (50 / speed);
-                        const rotation = x / (10 * Math.abs(speed));
+                        const xOffset = (x - centerX) / (80 / speed); // Softer movement for M3
+                        const yOffset = (y - centerY) / (80 / speed);
+                        const rotation = x / (15 * Math.abs(speed));
 
                         icon.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${rotation}deg)`;
                     });
@@ -549,9 +598,7 @@
             });
         }
 
-        const observerOptions = {
-            threshold: 0.1 
-        };
+        const observerOptions = { threshold: 0.1 };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
