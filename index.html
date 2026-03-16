@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mechanical Engineering Portfolio</title>
+    <title>Sriram S | Mechanical Engineering Portfolio</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +64,7 @@
                 rgba(0, 240, 255, 0.05), 
                 transparent 40%
             );
-            transition: background 0.05s ease; /* Faster glow tracking */
+            transition: background 0.05s ease;
         }
 
         .mech-icon {
@@ -73,7 +73,7 @@
             stroke: var(--c-cyan);
             stroke-width: 1px;
             fill: none;
-            transition: transform 0.1s ease-out; /* Snappier parallax */
+            transition: transform 0.1s ease-out;
         }
 
         #gear1 { top: 10%; left: 5%; width: 300px; height: 300px; }
@@ -126,7 +126,7 @@
             font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: color 0.2s ease; /* Faster nav hover */
+            transition: color 0.2s ease;
         }
 
         nav a:hover {
@@ -140,8 +140,8 @@
             flex-direction: column;
             justify-content: center;
             opacity: 0;
-            transform: scale(0.98) translateY(30px); /* Less travel distance */
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Faster section reveal */
+            transform: scale(0.98) translateY(30px);
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         section.section-show {
@@ -193,9 +193,16 @@
         #hero p {
             font-size: 1.6rem;
             color: var(--text-muted);
-            margin-bottom: 3.5rem;
+            margin-bottom: 1rem;
             max-width: 900px;
             font-weight: 300;
+        }
+        
+        .contact-info {
+            font-size: 1.1rem;
+            color: var(--c-cyan);
+            margin-bottom: 3.5rem;
+            letter-spacing: 1px;
         }
 
         .btn {
@@ -208,7 +215,7 @@
             font-size: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: all 0.2s ease; /* Faster button hover */
+            transition: all 0.2s ease;
             position: relative;
             border-radius: 50px; 
             backdrop-filter: blur(5px);
@@ -233,7 +240,7 @@
             padding: 3.5rem 2.5rem;
             border-radius: 30px; 
             border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Snappy card hover */
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
         }
@@ -249,7 +256,7 @@
         }
 
         .card:hover {
-            transform: translateY(-10px); /* Slightly less travel for speed */
+            transform: translateY(-10px);
             background: rgba(30, 30, 30, 0.8);
             border: 1px solid rgba(255,255,255,0.1);
         }
@@ -267,17 +274,17 @@
         .card.tech:hover { box-shadow: 0 20px 40px rgba(255, 204, 0, 0.15); }
         .card.tech h3 { color: var(--c-yellow); }
 
-        .card.rocket { border-top: 8px solid var(--c-orange); }
-        .card.rocket:hover { box-shadow: 0 20px 40px rgba(255, 69, 0, 0.15); }
-        .card.rocket h3 { color: var(--c-orange); }
+        .card.intern { border-top: 8px solid var(--c-cyan); }
+        .card.intern:hover { box-shadow: 0 20px 40px rgba(0, 240, 255, 0.15); }
+        .card.intern h3 { color: var(--c-cyan); }
 
-        .card.uav { border-top: 8px solid var(--c-cyan); }
-        .card.uav:hover { box-shadow: 0 20px 40px rgba(0, 240, 255, 0.15); }
-        .card.uav h3 { color: var(--c-cyan); }
+        .card.proj1 { border-top: 8px solid var(--c-orange); }
+        .card.proj1:hover { box-shadow: 0 20px 40px rgba(255, 69, 0, 0.15); }
+        .card.proj1 h3 { color: var(--c-orange); }
 
-        .card.kart { border-top: 8px solid var(--c-pink); }
-        .card.kart:hover { box-shadow: 0 20px 40px rgba(255, 0, 127, 0.15); }
-        .card.kart h3 { color: var(--c-pink); }
+        .card.proj2 { border-top: 8px solid var(--c-pink); }
+        .card.proj2:hover { box-shadow: 0 20px 40px rgba(255, 0, 127, 0.15); }
+        .card.proj2 h3 { color: var(--c-pink); }
 
         .card.lead { border-top: 8px solid var(--c-purple); }
         .card.lead:hover { box-shadow: 0 20px 40px rgba(176, 38, 255, 0.15); }
@@ -285,7 +292,7 @@
 
         .card h3 {
             font-family: var(--font-heading);
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 1.5rem;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -296,18 +303,19 @@
 
         .hidden {
             opacity: 0;
-            filter: blur(4px); /* Less blur for faster rendering */
-            transform: translateY(40px) scale(0.98); /* Less distance */
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Much faster card reveal */
+            filter: blur(4px);
+            transform: translateY(40px) scale(0.98);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .show {
             opacity: 1;
             filter: blur(0);
             transform: translateY(0) scale(1);
         }
-        /* Drastically reduced staggered wait times */
+        
         .grid-container .card:nth-child(2) { transition-delay: 75ms; }
         .grid-container .card:nth-child(3) { transition-delay: 150ms; }
+        .grid-container .card:nth-child(4) { transition-delay: 225ms; }
     </style>
 </head>
 <body>
@@ -321,10 +329,6 @@
             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
             <circle cx="12" cy="12" r="3"></circle>
         </svg>
-        <svg id="gear3" class="mech-icon" viewBox="0 0 24 24" data-speed="-3">
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-        </svg>
     </div>
 
     <nav>
@@ -332,15 +336,18 @@
         <ul>
             <li><a href="#hero">Home</a></li>
             <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#leadership">Leadership</a></li>
         </ul>
     </nav>
 
     <section id="hero">
         <div class="hidden">
-            <h1>[Your Name]</h1>
-            <p>Pre-Final Year Mechanical Engineering Student | Specializing in Propulsion Systems & UAV Aerodynamics</p>
+            <h1>Sriram S</h1>
+            <p>The Mechanical Engineer | Government College of Technology, Coimbatore</p>
+            <div class="contact-info">
+                +91 9360776088 | mmsekarsriram6@gmail.com
+            </div>
             <a href="#projects" class="btn">Explore My Work</a>
         </div>
     </section>
@@ -349,15 +356,44 @@
         <h2 class="section-title hidden">Education <span>& Skills</span></h2>
         <div class="grid-container">
             <div class="card edu hidden">
-                <h3>Academic Profile</h3>
+                <h3>B.E. Mechanical Engineering</h3>
                 <p><strong>Government College of Technology, Coimbatore</strong></p>
-                <p>B.E. Mechanical Engineering (Pre-Final Year)</p>
-                <p>Core Focus: Thermodynamics, Fluid Dynamics, Materials Science, and Finite Element Analysis.</p>
+                <p>Expected 2027 | Pre-Final Year</p>
+                <p>Current CGPA: 8.43 out of 10</p>
+            </div>
+            <div class="card edu hidden">
+                <h3>12th Standard (TN-HSC)</h3>
+                <p><strong>Government Higher Secondary School, Mambalapattu</strong></p>
+                <p>Major: Computer Science | 2023</p>
+                <p>Score: 89% (535 out of 600)</p>
             </div>
             <div class="card tech hidden">
                 <h3>Technical Stack</h3>
-                <p><strong>Design & Simulation:</strong> SolidWorks, ANSYS, MATLAB, Simulink</p>
-                <p><strong>Core Competencies:</strong> Liquid Rocket Engines, Aerodynamic Modeling, Transmission Systems</p>
+                <p><strong>CAD & Simulation:</strong> Fusion 360, AutoCAD, CREO, ANSYS Fluent, MATLAB, Simulink</p>
+                <p><strong>Development:</strong> HTML, CSS, Javascript, UI/UX, Arduino Systems (ESP 32)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="sec-transition">
+        <h2 class="section-title hidden">Experience <span>& Leadership</span></h2>
+        <div class="grid-container">
+            <div class="card intern hidden">
+                <h3>Internship | SRJ Automation</h3>
+                <p><strong>Coimbatore | Jun - Jul 2025</strong></p>
+                <p>Gained hands-on experience in CNC Operation, Quality Inspection, and Industrial Tools.</p>
+                <p>Learned the applications of CNC Machines in manufacturing processes, CNC programming logic, and Jigs and Fixtures.</p>
+            </div>
+            <div class="card lead hidden">
+                <h3>President | Centaurus Aerospace</h3>
+                <p><strong>Oct 2025 - Present</strong></p>
+                <p>Leading the Aerospace Club of GCT. Initiated 6+ projects in the domains of Cosmology, Aerospace, and Satellite Technologies.</p>
+                <p>Overseeing divisions: COSMOZ (Lander/Rover), AEROZ (Drones/RC), and SATOZ (Cubesat).</p>
+            </div>
+            <div class="card lead hidden">
+                <h3>Board Member | TEDxGCT 2026</h3>
+                <p><strong>Finance Division</strong></p>
+                <p>Coordinating overall financial transfers, raising funds through sponsors, and reporting the overall budget to the institution.</p>
             </div>
         </div>
     </section>
@@ -365,31 +401,25 @@
     <section id="projects" class="sec-transition">
         <h2 class="section-title hidden">Featured <span>Projects</span></h2>
         <div class="grid-container">
-            <div class="card rocket hidden">
-                <h3>1000N Rocket Engine</h3>
-                <p>Engineered and modeled a liquid rocket engine. Executed complex thrust calculations, determined precise nozzle design parameters, and simulated performance metrics using Simulink.</p>
+            <div class="card proj1 hidden">
+                <h3>Fluid Viscous Damper</h3>
+                <p><strong>TN-IMPACT 2026</strong></p>
+                <p>Designed a miniature electrically controlled Fluid Viscous Damper (100mm x 30mm dia) utilizing CREO, Fusion 360, and ANSYS Fluent for R&D and literature review.</p>
             </div>
-            <div class="card uav hidden">
-                <h3>SAE Drone Dev</h3>
-                <p>Designed, fabricated, and piloted UAVs for competitive flight. Secured All India Ranks 19 and 27 in the highly competitive SAE Drone Development Challenge.</p>
+            <div class="card proj1 hidden">
+                <h3>E-Cycle Chassis Design</h3>
+                <p><strong>SRJ Automation / Founder's Fix</strong></p>
+                <p>Designed an innovative E-Cycle Chassis hiding all visible external components while increasing battery capacity. Focused on design optimization and manufacturability using Fusion 360.</p>
             </div>
-            <div class="card kart hidden">
-                <h3>Go-Kart Transmission</h3>
-                <p>Developed a comprehensive mathematical design procedure to determine the optimal gear ratios for a high-performance go-kart chain drive transmission system.</p>
+            <div class="card proj2 hidden">
+                <h3>Mathworks Minidrone</h3>
+                <p><strong>2023 Competition</strong></p>
+                <p>Built a Flight Control System for a Quadcopter with integrated image processing. Simulated the CAD model and tested the control system working on Simulink and MATLAB.</p>
             </div>
-        </div>
-    </section>
-
-    <section id="leadership" class="sec-transition">
-        <h2 class="section-title hidden">Leadership <span>Profile</span></h2>
-        <div class="grid-container">
-            <div class="card lead hidden">
-                <h3>President, Centaurus</h3>
-                <p>Directing a premier technical society. Managing budgets, securing external internships for society members, and spearheading major engineering projects.</p>
-            </div>
-            <div class="card lead hidden" style="border-top-color: var(--c-orange);">
-                <h3 style="color: var(--c-orange);">Event Director</h3>
-                <p>Organizing PSAMY'25, a massive technical symposium coinciding with Dr. APJ Abdul Kalam's birthday, managing everything from promotional campaigns to on-ground logistics.</p>
+            <div class="card proj2 hidden">
+                <h3>S4 Smart Signal System</h3>
+                <p><strong>Dr. APJ Abdul Kalam Award Winner</strong></p>
+                <p>Built a smart signal system to reduce road accidents by introducing more colors in vehicle signal lights to represent various states of the vehicle.</p>
             </div>
         </div>
     </section>
@@ -398,7 +428,6 @@
         const mechIcons = document.querySelectorAll('.mech-icon');
         let requestRef;
 
-        // Optimized Mouse Tracking using requestAnimationFrame for zero-lag feeling
         document.addEventListener('mousemove', (e) => {
             if (requestRef) cancelAnimationFrame(requestRef);
             
